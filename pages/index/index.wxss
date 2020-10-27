@@ -1,0 +1,18 @@
+/**index.wxss**/
+.menu {
+  margin: 32rpx 24rpx;
+  padding: 0 24rpx;
+  border: 1rpx solid #dddddd;
+  border-radius: 32rpx;
+}
+
+.menu-item {
+  font-size: 32rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+  color: #333333;
+}
+
+.menu-item+.menu-item {
+  border-top: 1rpx solid #dddddd;
+}

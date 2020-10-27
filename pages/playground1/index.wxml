@@ -1,0 +1,6 @@
+<!--pages/playground1/index.wxml-->
+<swiper vertical="true" class="swiper" duration="200" easing-function="easeOutCubic" bindanimationfinish="bindSwiper" current="{{swiperCursor}}">
+  <swiper-item wx:for="{{swiperWindow}}" wx:key="id">
+    <view class="content" style="background-color: {{item.color}}">{{item.id}}</view>
+  </swiper-item>
+</swiper>
