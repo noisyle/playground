@@ -1,0 +1,11 @@
+<!--pages/playground2/index.wxml-->
+<view class="container">
+  <view class="button">
+    <view class="hole {{isOpen?'':'close'}}" bindtap="bindTap" bindtouchmove="bindTouchMove">
+      <view class="switch">
+        <view class="one"></view>
+        <view class="zero"></view>
+      </view>
+    </view>
+  </view>
+</view>
