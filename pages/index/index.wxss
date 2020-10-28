@@ -3,7 +3,7 @@
   margin: 32rpx 24rpx;
   padding: 0 24rpx;
   border: 1rpx solid #dddddd;
-  border-radius: 32rpx;
+  border-radius: 16rpx;
 }
 
 .menu-item {

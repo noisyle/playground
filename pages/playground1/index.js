@@ -54,9 +54,9 @@ Page({
 
   // 请求后台加载数据
   _loadData() {
-    // Mock模拟2页数据
+    // Mock模拟3页数据
     return new Promise((resolve, reject) => {
-      if(dataPage > 2) {
+      if(dataPage > 3) {
         resolve({data: []})
         return
       }
@@ -64,7 +64,7 @@ Page({
         title: `加载第 ${dataPage} 页`,
         icon: 'none'
       })
-      const data = new Array(5).fill('').map((e, i) => {return {id: (dataPage - 1) * 5 + i, color: colorArr[i]}})
+      const data = new Array(5).fill('').map((e, i) => {return {id: (dataPage - 1) * 5 + i + 1, color: colorArr[i]}})
       dataPage++
 
       resolve({data: data})
