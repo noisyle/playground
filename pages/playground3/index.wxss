@@ -1,0 +1,43 @@
+/* pages/playground3/index.wxss */
+.lottery-wrap {
+  width: 100%;
+  margin: 24rpx 0;
+}
+
+.lottery {
+  width: 600rpx;
+  height: 600rpx;
+	margin: 0 auto;
+	border-radius: 50%;
+  box-sizing: border-box;
+	overflow: hidden;
+	position: relative;
+	background-color: #330000;
+  box-shadow: 0 0 15rpx #000000;
+  transition: all 5s ease-out;
+}
+
+.lottery-item {
+	box-shadow: 0 0 1rpx #000000 inset;
+	position: absolute;
+	width: 300rpx;
+	height: 300rpx;
+  box-sizing: border-box;
+  transform-origin: right bottom 0;
+}
+
+.lottery-item-wrap {
+	transform-origin: center center 0;
+	position: absolute;
+	width: 200rpx;
+	height: 230rpx;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+}
+
+.lottery-item-content {
+  width: 48rpx;
+  font-size: 48rpx;
+  font-weight: 600;
+}
