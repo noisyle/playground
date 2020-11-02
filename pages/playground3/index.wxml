@@ -1,7 +1,7 @@
 <!--pages/playground3/index.wxml-->
 <view class="lottery-wrap">
   <view class="lottery" style="{{'transform: rotate(' + rotate + 'deg);'}}" bindtap="rotate">
-    <view class="lottery-item" style="{{'transform: rotate(' + index * item.angle + 'deg) skewY(' + (90 - item.angle) + 'deg); background-color: ' + item.color + ';'}}" wx:for="{{rewards}}" wx:key="idx">
+    <view class="lottery-item" style="{{'transform: rotate(-' + index * item.angle + 'deg) skewY(' + (90 - item.angle) + 'deg); background-color: ' + item.color + ';'}}" wx:for="{{rewards}}" wx:key="idx">
       <view class="lottery-item-wrap" style="{{'transform: skewY(-' + (90 - item.angle) + 'deg) rotate(-' + item.angle / 2 + 'deg) translate(10rpx, 70rpx);'}}">
         <text class="lottery-item-content">{{item.name}}</text>
       </view>

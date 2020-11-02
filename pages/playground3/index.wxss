@@ -1,20 +1,32 @@
 /* pages/playground3/index.wxss */
 .lottery-wrap {
-  width: 100%;
-  margin: 24rpx 0;
+	width: 600rpx;
+	height: 600rpx;
+	margin: 12rpx auto;
+}
+
+.lottery-wrap:after {
+	content: '';
+	height: 0rpx;
+	width: 0rpx;
+	position: absolute;
+	top: 0;
+	left: calc(50% - 20rpx);
+	border-top: 60rpx solid #CC3333;
+	border-left: 20rpx solid transparent;
+	border-right: 20rpx solid transparent;
 }
 
 .lottery {
-  width: 600rpx;
-  height: 600rpx;
-	margin: 0 auto;
+	width: 100%;
+	height: 100%;
 	border-radius: 50%;
-  box-sizing: border-box;
+	box-sizing: border-box;
 	overflow: hidden;
 	position: relative;
 	background-color: #330000;
-  box-shadow: 0 0 15rpx #000000;
-  transition: all 5s ease-out;
+	box-shadow: 0 0 15rpx #000000;
+	transition: all 5s cubic-bezier(.2, .93, .43, 1);
 }
 
 .lottery-item {
@@ -22,8 +34,8 @@
 	position: absolute;
 	width: 300rpx;
 	height: 300rpx;
-  box-sizing: border-box;
-  transform-origin: right bottom 0;
+	box-sizing: border-box;
+	transform-origin: right bottom 0;
 }
 
 .lottery-item-wrap {
@@ -37,7 +49,7 @@
 }
 
 .lottery-item-content {
-  width: 48rpx;
-  font-size: 48rpx;
-  font-weight: 600;
+	width: 48rpx;
+	font-size: 48rpx;
+	font-weight: 600;
 }

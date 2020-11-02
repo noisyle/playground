@@ -13,6 +13,7 @@ Page({
 
   onReady() {
     let rewards = ['奖品1', '奖品2', '奖品3', '奖品4', '奖品5', '奖品6', '奖品7', '奖品8']
+    // 计算每个奖项在圆盘中所占的角度
     rewards = rewards.map((e, i) => {return {
       idx: i,
       name: e,
@@ -24,12 +25,27 @@ Page({
     })
   },
 
-  rotate () {
+  rotate() {
     if(running) return
     running = true
+    let rotate = this.data.rotate + Math.round(360 * (10 + Math.random()))
     this.setData({
-      rotate: this.data.rotate + Math.round(360 * (5 + Math.random()))
+      rotate: rotate
     })
-    setTimeout(() => {running = false}, 5100)
+    setTimeout(() => {
+      running = false
+      rotate = rotate % 360
+      for(let i in this.data.rewards) {
+        const reward = this.data.rewards[i]
+        rotate -= reward.angle
+        if(rotate < 0) {
+          wx.showToast({
+            title: reward.name,
+            icon: 'none'
+          })
+          return
+        }
+      }
+    }, 5100)
   },
 })
