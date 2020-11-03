@@ -42,33 +42,11 @@ Page({
         this._loadData().then(res => {
           if(res.data.length) {
             dataList = Array.prototype.concat.apply(dataList, res.data)
-            this._moveSwiperWindow(true)
-          } else {
-            // 如果下一页没有数据，则进入循环
-            this._moveSwiperWindow(true)
           }
+          this._moveSwiperWindow(true)
         })
       }
     }
-  },
-
-  // 请求后台加载数据
-  _loadData() {
-    // Mock模拟3页数据
-    return new Promise((resolve, reject) => {
-      if(dataPage > 3) {
-        resolve({data: []})
-        return
-      }
-      wx.showToast({
-        title: `加载第 ${dataPage} 页`,
-        icon: 'none'
-      })
-      const data = new Array(5).fill('').map((e, i) => {return {id: (dataPage - 1) * 5 + i + 1, color: colorArr[i]}})
-      dataPage++
-
-      resolve({data: data})
-    })
   },
 
   /**
@@ -94,5 +72,24 @@ Page({
       const swiperWindow = Array.prototype.concat.apply(part1, part2)
       this.setData({ swiperWindow: swiperWindow, swiperCursor: 1 })
     }
+  },
+
+  // 请求后台加载数据
+  _loadData() {
+    return new Promise((resolve, reject) => {
+      // Mock模拟3页数据
+      if(dataPage > 3) {
+        resolve({data: []})
+        return
+      }
+      wx.showToast({
+        title: `加载第 ${dataPage} 页`,
+        icon: 'none'
+      })
+      const data = new Array(5).fill('').map((e, i) => {return {id: (dataPage - 1) * 5 + i + 1, color: colorArr[i]}})
+      dataPage++
+
+      resolve({data: data})
+    })
   },
 })
