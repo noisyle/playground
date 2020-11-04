@@ -1,6 +1,6 @@
 // pages/playground3/index.js
 const colorArr = ['#FFFFCC', '#CCFFFF', '#FFCCCC', '#FFFF99', '#CCCCFF'] // demo用的背景色数组
-let running = false
+let running = false, timer = null
 Page({
 
   /**
@@ -12,7 +12,7 @@ Page({
   },
 
   onReady() {
-    let rewards = ['奖品1', '奖品2', '奖品3', '奖品4', '奖品5', '奖品6', '奖品7', '奖品8']
+    let rewards = ['奖品1', '奖品2', '奖品3', '奖品4', '奖品5', '奖品6']
     // 计算每个奖项在圆盘中所占的角度
     rewards = rewards.map((e, i) => {return {
       idx: i,
@@ -26,6 +26,14 @@ Page({
     })
   },
 
+  onUnload() {
+    if(timer) {
+      clearTimeout(timer)
+      timer = null
+      running = false
+    }
+  },
+
   rotate() {
     if(running) return
     running = true
@@ -33,7 +41,7 @@ Page({
     this.setData({
       rotate: rotate
     })
-    setTimeout(() => {
+    timer = setTimeout(() => {
       running = false
       rotate = rotate % 360
       const reward = this.data.rewards.filter(e => e.offset <= rotate && e.offset+e.angle > rotate)[0]
@@ -41,6 +49,8 @@ Page({
         title: '恭喜获得' + reward.name,
         icon: 'none'
       })
+      clearTimeout(timer)
+      timer = null
     }, 5100)
   },
 })

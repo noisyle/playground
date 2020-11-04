@@ -1,16 +1,17 @@
 // pages/playground1/index.js
 const colorArr = ['#FFFFCC', '#CCFFFF', '#FFCCCC', '#FFFF99', '#CCCCFF'] // demo用的背景色数组
-let dataList = [], dataPage = 1, windowCursor = 0
+let dataList = [], dataPage = 1, windowCursor = 0 // 窗口在列表中的起始位置指针
 Page({
 
   data: {
     // 滑块窗口，长度为3
     swiperWindow: [],
+    // 屏幕在窗口中的位置指针
     swiperCursor: 0
   },
 
   onLoad() {
-    dataList = [], dataPage = 1, windowCursor = 0
+    dataList = [], dataPage = 1
     this._loadData().then(res => {
       dataList = Array.prototype.concat.apply(dataList, res.data)
       const swiperWindow = dataList.slice(windowCursor, windowCursor + 3)
@@ -28,10 +29,18 @@ Page({
       } else {
         // TODO 上划刷新？反向循环？
         wx.showToast({
-          title: `到达顶部`,
+          title: `回到顶部`,
           icon: 'none'
         })
+        this.setData({
+          swiperCursor: 0
+        })
       }
+    } else if(swiperCursor === 1) {
+      // 从顶部向下划动，不移动窗口
+        this.setData({
+          swiperCursor: 1
+        })
     } else if(swiperCursor === 2) {
       // 向下划动
       if(dataList.length - windowCursor > 3) {
@@ -55,22 +64,23 @@ Page({
    */
   _moveSwiperWindow(moveDown) {
     moveDown ? windowCursor++ : windowCursor--
-    if(windowCursor > dataList.length - 1 || windowCursor < 0) {
-      windowCursor = 0
+    let swiperCursor = 1
+    if(windowCursor + swiperCursor > dataList.length - 1) {
+      windowCursor = swiperCursor = 0
+      wx.showToast({
+        title: `开始循环`,
+        icon: 'none'
+      })
     }
     if(dataList.length - windowCursor >= 3) {
       // 列表中剩余数据足够
       const swiperWindow = dataList.slice(windowCursor, windowCursor + 3)
-      this.setData({ swiperWindow: swiperWindow, swiperCursor: 1 })
+      this.setData({ swiperWindow: swiperWindow, swiperCursor: swiperCursor })
     } else {
       // 列表中剩余数据不足窗口大小，从列表顶部截取数据填充窗口，实现循环显示的效果
-      wx.showToast({
-        title: `进入循环`,
-        icon: 'none'
-      })
       const part1 = dataList.slice(windowCursor, dataList.length), part2 = dataList.slice(0, 3 - part1.length)
       const swiperWindow = Array.prototype.concat.apply(part1, part2)
-      this.setData({ swiperWindow: swiperWindow, swiperCursor: 1 })
+      this.setData({ swiperWindow: swiperWindow, swiperCursor: swiperCursor })
     }
   },
 
