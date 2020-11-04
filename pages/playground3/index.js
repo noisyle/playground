@@ -12,14 +12,16 @@ Page({
   },
 
   onReady() {
-    let rewards = ['奖品1', '奖品2', '奖品3', '奖品4', '奖品5', '奖品6']
+    let rewards = ['奖品1', '奖品2', '奖品3', '奖品4', '奖品5', '奖品6', '奖品5', '奖品6']
     // 计算每个奖项在圆盘中所占的角度
+    const angle = (360 / rewards.length).toFixed(1)
     rewards = rewards.map((e, i) => {return {
       idx: i,
       name: e,
-      offset: Math.floor(360 / rewards.length) * i,
-      angle: (i === rewards.length - 1) ? 360 - Math.floor(360 / rewards.length) * (rewards.length - 1) : Math.floor(360 / rewards.length),
-      color: colorArr[i % colorArr.length]
+      offset: angle * i,
+      translate: {x: Math.round(0 - 300 * Math.sin(Math.PI / rewards.length) + 42), y: 0},
+      angle: i === rewards.length - 1 ? 360 - (angle * i).toFixed(1) : angle,
+      color: i === rewards.length - 1 && colorArr[i % colorArr.length] === colorArr[0] ? colorArr[1] : colorArr[i % colorArr.length] // 防止首尾颜色相同
     }})
     this.setData({
       rewards: rewards,
