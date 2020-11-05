@@ -46,13 +46,19 @@
 	right: 0;
 	bottom: 0;
 	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
 }
 
 .lottery-item-content {
-	position: absolute;
-	top: 0;
-	right: 0;
 	width: 48rpx;
 	font-size: 48rpx;
 	font-weight: 600;
+}
+
+.lottery-action {
+	margin-top: 32rpx;
+	display: flex;
+	justify-content: space-between;
 }
