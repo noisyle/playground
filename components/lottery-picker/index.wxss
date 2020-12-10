@@ -65,6 +65,11 @@
   font-size: 36rpx;
   line-height: 82rpx;
   text-align: center;
+  transform: translate(-1rpx, -1rpx);
+}
+
+.picker-item:active {
+  transform: translate(0, 0);
 }
 
 .picker-action {
@@ -109,7 +114,7 @@
   transform: translate(-1rpx, -1rpx);
 }
 
-.picker-btn-confirm:hover {
+.picker-btn-confirm:active {
   transform: translate(0, 0);
 }
 
