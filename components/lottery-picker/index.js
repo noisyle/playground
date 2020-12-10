@@ -40,7 +40,7 @@ Component({
           confirmable: false
         })
       } else {
-        throw new Error('不支持的类型: ' + this.data.lottery)
+        console.warn('不支持的彩种:', this.data.lottery)
       }
     },
     toggleSelect(e) {
@@ -76,15 +76,8 @@ Component({
     }
   },
 
-  lifetimes: {
-    attached() {
-      this._init(this.data.lottery)
-    },
-  },
-
   observers: {
     'lottery': function (lottery) {
-      console.log('observers lottery')
       this._init(lottery)
     }
   }

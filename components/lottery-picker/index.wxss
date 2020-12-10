@@ -1,9 +1,18 @@
 /* components/lottery-picker/index.wxss */
 .picker-wrap {
+  height: 100%;
   background: #F5F5F5;
   color: #000000;
   font-size: 32rpx;
   font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+.picker-tips {
+  font-size: 24rpx;
+  line-height: 56rpx;
+  text-align: center;
+  color: #FFFFFF;
+  background: #F04848;
 }
 
 .picker-group {
@@ -60,8 +69,7 @@
 
 .picker-action {
   margin-top: 32rpx;
-  margin-bottom: 64rpx;
-  padding: 24rpx 32rpx 28rpx;
+  padding: 24rpx 32rpx 102rpx;
   background: #FFFFFF;
   display: flex;
   flex-direction: column;

@@ -33,7 +33,7 @@ Page({
     ],
     pickerType: '',
     pickerHeight: 0,
-    pickerTop: 0
+    pickerTop: 9999
   },
 
   onLoad: function (options) {
@@ -52,7 +52,6 @@ Page({
   },
 
   bindSubmit(e) {
-    console.log(e)
     this.setData({
       pickerTop: this.data.pickerHeight
     })
