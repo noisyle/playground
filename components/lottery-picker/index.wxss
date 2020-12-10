@@ -1,0 +1,114 @@
+/* components/lottery-picker/index.wxss */
+.picker-wrap {
+  background: #F5F5F5;
+  color: #000000;
+  font-size: 32rpx;
+  font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+.picker-group {
+  margin-bottom: 24rpx;
+  padding: 36rpx 0 28rpx;
+  background: #FFFFFF;
+}
+
+.picker-group.horizon {
+  display: flex;
+  margin-bottom: 0;
+  padding: 20rpx 0 16rpx;
+}
+
+.picker-group.horizon .picker-title {
+  flex-shrink: 0;
+  margin-top: 12rpx;
+}
+
+.picker-group.horizon .picker-content {
+  margin-top: 0;
+}
+
+.picker-title {
+  padding: 0 28rpx;
+}
+
+.picker-subtitle {
+  font-size: 26rpx;
+  color: #999999;
+  margin-left: 19rpx;
+}
+
+.picker-content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 24rpx;
+  padding: 0 18rpx;
+}
+
+.picker-item {
+  width: 82rpx;
+  height: 82rpx;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 2rpx solid transparent;
+  margin: 12rpx 10rpx;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 36rpx;
+  line-height: 82rpx;
+  text-align: center;
+}
+
+.picker-action {
+  margin-top: 32rpx;
+  margin-bottom: 64rpx;
+  padding: 24rpx 32rpx 28rpx;
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.picker-selected-wrap {
+  margin: 8rpx 0 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.picker-selected {
+  display: inline-block;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-color: #DDDDDD;
+  color: #FFFFFF;
+  margin: 12rpx;
+  font-weight: 600;
+  font-size: 24rpx;
+  line-height: 60rpx;
+  text-align: center;
+}
+
+.picker-btn-confirm {
+  width: 100%;
+  height: 88rpx;
+  border-radius: 44rpx;
+  background: #DDDDDD;
+  color: #FFFFFF;
+  line-height: 88rpx;
+  text-align: center;
+  transform: translate(-1rpx, -1rpx);
+}
+
+.picker-btn-confirm:hover {
+  transform: translate(0, 0);
+}
+
+.picker-btn-confirm.active {
+  background: #F04848;
+}
+
+.small {
+  font-size: 28rpx;
+}

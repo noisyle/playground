@@ -1,0 +1,6 @@
+/* pages/playground4/index.wxss */
+.picker-panel {
+  position: fixed;
+  overflow: scroll;
+  transition: all .3s ease-in-out;
+}

@@ -1,0 +1,7 @@
+<!--pages/playground4/index.wxml-->
+<view>
+  <button wx:for="{{lotterys}}" wx:key="code" bindtap="bindTap" data-value="{{item.code}}">{{item.name}}</button>
+</view>
+<view class="picker-panel" style="height: {{pickerHeight}}px; top: {{pickerTop}}px;">
+  <lottery-picker wx:if="{{pickerType}}" lottery="{{pickerType}}" bindsubmit="bindSubmit"></lottery-picker>
+</view>

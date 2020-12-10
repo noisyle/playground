@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "lottery-picker": "/components/lottery-picker/index"
+  }
+}

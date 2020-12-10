@@ -1,0 +1,23 @@
+<!--components/lottery-picker/index.wxml-->
+<view class="picker-wrap">
+  <view class="picker-group {{category === 1 ? '' : 'horizon'}}" wx:for="{{params}}" wx:key="name" wx:for-index="idx" wx:for-item="group">
+    <view class="picker-title">
+      <text>{{group.name}}</text><text class="picker-subtitle" wx:if="{{category === 1}}">选择{{group.chance}}个</text>
+    </view>
+    <view class="picker-content">
+      <view class="picker-item" style="{{item.selected?'background:'+group.color:'color:'+group.color+';border-color:'+group.color}}"
+        wx:for="{{group.numbers}}" wx:key="value" bindtap="toggleSelect" data-group="{{idx}}" data-index="{{index}}" data-value="{{item.value}}">
+        {{item.value}}
+      </view>
+    </view>
+  </view>
+  <view class="picker-action">
+    <view class="small">我的选择</view>
+    <view class="picker-selected-wrap">
+      <block wx:for="{{params}}" wx:key="name" wx:for-index="idx" wx:for-item="group">
+        <text class="picker-selected" style="{{item?'background:'+group.color:''}}" wx:for="{{group.selected}}" wx:key="*this">{{item}}</text>
+      </block>
+    </view>
+    <view class="picker-btn-confirm {{confirmable?'active':''}}" bindtap="submit">参与抽奖</view>
+  </view>
+</view>
