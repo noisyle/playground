@@ -2,7 +2,7 @@
 /**
  * @author York Wang <https://github.com/noisyle>
  */
-const { configs } = require('./config.js')
+const { lotterys } = require('./lotterys.js')
 Component({
   properties: {
     /**
@@ -24,7 +24,7 @@ Component({
 
   methods: {
     _init(lottery) {
-      const config = configs[lottery]
+      const config = lotterys[lottery]
       if (config) {
         config.params.forEach((e, i) => {
           e.numbers = new Array(config.params[i].total).fill('').map((n, j) => {

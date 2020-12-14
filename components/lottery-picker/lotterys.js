@@ -1,9 +1,10 @@
-// components/lottery-picker/config.js
+// components/lottery-picker/lotterys.js
 /**
  * @author York Wang <https://github.com/noisyle>
  */
-const configs = {
+const lotterys = {
   dlt: {
+    name: '超级大乐透',
     category: 1,
     params: [{
       name: '前区',
@@ -18,6 +19,7 @@ const configs = {
     }]
   },
   ssq: {
+    name: '双色球',
     category: 1,
     params: [{
       name: '红球',
@@ -32,6 +34,7 @@ const configs = {
     }]
   },
   fc3d: {
+    name: '福彩3D',
     category: 2,
     params: [{
       name: '第一位',
@@ -51,6 +54,7 @@ const configs = {
     }]
   },
   pl3: {
+    name: '排列三',
     category: 2,
     params: [{
       name: '第一位',
@@ -70,6 +74,7 @@ const configs = {
     }]
   },
   pl5: {
+    name: '排列五',
     category: 2,
     params: [{
       name: '第一位',
@@ -99,6 +104,7 @@ const configs = {
     }]
   },
   qxc: {
+    name: '七星彩',
     category: 2,
     params: [{
       name: '第一位',
@@ -138,6 +144,7 @@ const configs = {
     }]
   },
   qlc: {
+    name: '七乐彩',
     category: 1,
     params: [{
       name: '号码',
@@ -149,5 +156,5 @@ const configs = {
 }
 
 module.exports = {
-  configs: configs
+  lotterys: lotterys
 }
