@@ -1,4 +1,8 @@
 /* pages/playground4/index.wxss */
+.demo-button > button + button {
+  margin-top: 12rpx;
+}
+
 .picker-panel {
   position: fixed;
   overflow: scroll;

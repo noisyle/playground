@@ -72,7 +72,7 @@ Component({
     submit() {
       if (!this.data.confirmable) return
       this.triggerEvent('submit', {
-        value: this.data.category === 1 ? this.data.params.map(g => g.selected) : this.data.params.map(g => g.selected[0])
+        value: this.data.category === 1 ? this.data.params.map(g => g.selected.join()) : [this.data.params.map(g => g.selected[0]).join()]
       }, {})
     }
   },

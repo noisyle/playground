@@ -1,5 +1,5 @@
 <!--pages/playground4/index.wxml-->
-<view>
+<view class="demo-button">
   <button wx:for="{{lotterys}}" wx:key="code" bindtap="bindTap" data-value="{{item.code}}">{{item.name}}</button>
 </view>
 
