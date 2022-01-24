@@ -4,7 +4,8 @@
     "pages/playground1/index",
     "pages/playground2/index",
     "pages/playground3/index",
-    "pages/playground4/index"
+    "pages/playground4/index",
+    "pages/playground5/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
