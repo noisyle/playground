@@ -46,13 +46,14 @@ Page({
 
   getUserProfile(e) {
     wx.getUserProfile({
-      desc: '用于完善会员资料',
+      desc: '用于完善用户资料',
       success: (res) => {
+        console.log(res.userInfo)
         app.request({url: 'auth/info', data: {
-          encryptedData: e.detail.encryptedData,
-          iv: e.detail.iv,
+          encryptedData: res.encryptedData,
+          iv: res.iv,
         }}).then(res => {
-          console.log(`获取手机号成功，telephone: ${res.data.telephone}`)
+          console.log(`获取头像昵称成功，nickname: ${res.data.nickname}`)
         })
       }
     })
