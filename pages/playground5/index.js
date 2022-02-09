@@ -3,45 +3,41 @@ const app = getApp()
 Page({
 
   data: {
-
   },
 
   registerOrLogin() {
-    new Promise((resolve, reject) => {
-      wx.login({
-        success(res) {
-          resolve(res)
-        },
-        fail(err) {
-          reject(err)
-        }
-      })
-    }).then(res => {
-      app.request({url: 'auth/login', data: {code: res.code}}).then(res => {
-        console.log(`登陆成功，openid: ${res.data.openid}`)
-        const {userid, token, user} = res.data
-        app.globalData.userid = userid
-        app.globalData.token = token
-        app.globalData.user = user
-      })
+    wx.login({
+      success(res) {
+        app.request({url: 'auth/login', data: {code: res.code}}).then(res => {
+          console.log('登陆成功, %O', res.data.user)
+          app.globalData.token = res.data.token
+          app.globalData.user = res.data.user
+          wx.showToast({
+            title: `登陆成功`,
+            icon: 'success',
+            duration: 2000,
+          })
+        }).catch(err => {
+          console.error('登录失败: %O', err)
+        })
+      },
+      fail(err) {
+      console.error('登录失败: %O', err)
+      }
     })
   },
 
   me() {
     app.request({url: 'user/me'}).then(res => {
-      console.log(res)
-    })
-  },
-
-  getPhoneNumber(e) {
-    if(e.detail.errMsg === 'getPhoneNumber:ok') {
-      app.request({url: 'auth/phone', data: {
-        encryptedData: e.detail.encryptedData,
-        iv: e.detail.iv,
-      }}).then(res => {
-        console.log(`获取手机号成功，telephone: ${res.data.telephone}`)
+      console.log('获取个人信息成功: %O', res.data)
+      wx.showToast({
+        title: `您好, ${res.data.nickname}`,
+        icon: 'success',
+        duration: 2000,
       })
-    }
+    }).catch(err => {
+      console.error('获取个人信息失败: %O', err)
+    })
   },
 
   getUserProfile(e) {
@@ -54,8 +50,28 @@ Page({
           iv: res.iv,
         }}).then(res => {
           console.log(`获取头像昵称成功，nickname: ${res.data.nickname}`)
+          wx.showToast({
+            title: `您好, ${res.data.nickname}`,
+            icon: 'success',
+            duration: 2000,
+          })
         })
       }
     })
+  },
+
+  getPhoneNumber(e) {
+    if(e.detail.errMsg === 'getPhoneNumber:ok') {
+      app.request({url: 'auth/phone', data: {
+        encryptedData: e.detail.encryptedData,
+        iv: e.detail.iv,
+      }}).then(res => {
+        console.log(`获取手机号成功，telephone: ${res.data.telephone}`)
+        wx.showModal({
+          content: `您的手机号是 ${res.data.telephone}`,
+          showCancel: false,
+        })
+      })
+    }
   },
 })
