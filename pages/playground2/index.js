@@ -10,11 +10,12 @@ Page({
   },
 
   onLoad(options) {
-    const that = this
-    innerAudioContext = wx.createInnerAudioContext()
+    innerAudioContext = wx.createInnerAudioContext({
+      useWebAudioImplement: true
+    })
     innerAudioContext.src = '/pages/playground2/button.mp3'
     innerAudioContext.onPlay(() => {
-      that.setData({
+      this.setData({
         isOpen: !this.data.isOpen
       })
     })

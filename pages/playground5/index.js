@@ -22,7 +22,7 @@ Page({
         })
       },
       fail(err) {
-      console.error('登录失败: %O', err)
+        console.error('登录失败: %O', err)
       }
     })
   },

@@ -8,10 +8,10 @@ App({
 
   },
   globalData: {
-    openid: '',
     token: '',
     user: {},
     service: 'http://127.0.0.1:8090/',
+    // service: 'https://tm.teweikeji.net/',
   },
   request(param) {
     return new Promise((resolve, reject) => {
