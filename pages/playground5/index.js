@@ -1,10 +1,10 @@
 // pages/playground5/index.js
+const { formatTime } = require('../../utils/util')
 const app = getApp()
 Page({
-
   data: {
+    date: formatTime(new Date(), 'yyyy-MM-dd EEE')
   },
-
   registerOrLogin() {
     wx.login({
       success(res) {

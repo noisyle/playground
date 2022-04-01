@@ -1,4 +1,5 @@
 <!--pages/playground5/index.wxml-->
+<navigation-bar back="{{true}}" title="{{date}}"></navigation-bar>
 <button bindtap="registerOrLogin">登录</button>
 <button bindtap="me">显示信息</button>
 <button bindtap="getUserProfile">获取头像昵称</button>
