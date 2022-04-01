@@ -1,5 +1,5 @@
 <!--components/navigation-bar/navigation-bar.wxml-->
-<view class="nav" style="height:{{navBarHeight}}px;">
+<view class="nav" style="height: {{navBarHeight}}px;">
   <view class="nav-main" style="bottom: {{menuBottom}}px; padding: 0 {{menuRight}}px; height: {{menuHeight}}px;">
     <view class='title'>{{title}}</view>
     <view class='capsule' wx:if="{{ back || home }}">
@@ -12,4 +12,3 @@
     </view>
   </view>
 </view>
-<view class="nav-bg" style="height: {{navBarHeight}}px;"></view>

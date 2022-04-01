@@ -1,6 +1,6 @@
 /* pages/playground4/index.wxss */
 .demo-button > button + button {
-  margin-top: 12rpx;
+  margin-top: 32rpx;
 }
 
 .picker-panel {

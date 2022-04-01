@@ -1,6 +1,8 @@
 //index.js
+const app = getApp()
 Page({
   data: {
+    navBarHeight: app.globalData.navBar.navBarHeight,
     menu: [
       { url: '/pages/playground1/index', name: '仿抖音翻页' },
       { url: '/pages/playground2/index', name: '开关按钮' },

@@ -4,16 +4,13 @@
   top: 0;
   left: 0;
   width: 100vw;
+  z-index: 999;
 }
 
 .nav-main {
   position: absolute;
   box-sizing: border-box;
   width: 100%;
-}
-
-.nav-bg {
-  background: linear-gradient(to right, #41b2ff 0%, #2086ff 100%);
 }
 
 .title {

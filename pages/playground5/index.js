@@ -3,7 +3,8 @@ const { formatTime } = require('../../utils/util')
 const app = getApp()
 Page({
   data: {
-    date: formatTime(new Date(), 'yyyy-MM-dd EEE')
+    navBarHeight: app.globalData.navBar.navBarHeight,
+    date: formatTime(new Date(), 'MM月dd日 EEE'),
   },
   registerOrLogin() {
     wx.login({

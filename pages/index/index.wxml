@@ -1,6 +1,10 @@
 <!--index.wxml-->
-<view class="menu">
-  <view class="menu-item" wx:for="{{menu}}" wx:key="url">
-    <navigator url="{{item.url}}">{{item.name}}</navigator>
+<navigation-bar title="首页"></navigation-bar>
+<view class="bg"></view>
+<view class="container" style="padding-top: {{navBarHeight}}px;">
+  <view class="menu">
+    <view class="menu-item" wx:for="{{menu}}" wx:key="url">
+      <navigator url="{{item.url}}">{{item.name}}</navigator>
+    </view>
   </view>
 </view>

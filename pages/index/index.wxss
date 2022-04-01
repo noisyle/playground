@@ -1,18 +1,39 @@
 /**index.wxss**/
+page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #41b2ff 0%, #2086ff 100%);
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
 .menu {
   margin: 32rpx 24rpx;
   padding: 0 24rpx;
-  border: 1rpx solid #dddddd;
+  border: 1rpx solid #CCCCCC;
   border-radius: 16rpx;
+  background-color: rgba(255, 255, 255, .6);
 }
 
 .menu-item {
   font-size: 32rpx;
   line-height: 80rpx;
   height: 80rpx;
-  color: #333333;
+  color: #2B2B2B;
 }
 
 .menu-item+.menu-item {
-  border-top: 1rpx solid #dddddd;
+  border-top: 1rpx solid #CCCCCC;
 }
