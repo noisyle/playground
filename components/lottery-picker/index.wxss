@@ -1,10 +1,13 @@
 /* components/lottery-picker/index.wxss */
-.picker-wrap {
-  height: 100%;
+.picker-panel {
+  position: fixed;
+  width: 100vw;
+  overflow-y: scroll;
   background: #F5F5F5;
   color: #000000;
   font-size: 32rpx;
   font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
+  transition: all .3s ease-in-out;
 }
 
 .picker-tips {

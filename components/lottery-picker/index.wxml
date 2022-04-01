@@ -1,5 +1,5 @@
 <!--components/lottery-picker/index.wxml-->
-<view class="picker-wrap">
+<view class="picker-panel" style="height: {{height}}px; top: {{top}}px;">
   <view class="picker-tips">不提供线上购买彩票和兑奖服务</view>
   <view class="picker-group {{category === 1 ? '' : 'horizon'}}" wx:for="{{params}}" wx:key="name" wx:for-index="idx" wx:for-item="group">
     <view class="picker-title">

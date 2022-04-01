@@ -32,28 +32,22 @@ Page({
       }
     ],
     pickerType: '',
-    pickerHeight: 0,
-    pickerTop: 9999
+    pickerShow: false,
   },
 
   onLoad: function (options) {
-    const res = wx.getSystemInfoSync()
-    this.setData({
-      pickerHeight: res.windowHeight,
-      pickerTop: res.windowHeight
-    })
   },
 
   bindTap(e) {
     this.setData({
       pickerType: e.currentTarget.dataset.value,
-      pickerTop: 0
+      pickerShow: true,
     })
   },
 
   bindSubmit(e) {
     this.setData({
-      pickerTop: this.data.pickerHeight
+      pickerShow: false,
     })
     wx.showToast({
       title: JSON.stringify(e.detail.value),

@@ -8,7 +8,11 @@ Component({
     /**
      * 彩种代码: dlt,ssq,fc3d,pl3,pl5,qxc,qlc
      */
-    lottery: String
+    lottery: String,
+    /**
+     * 是否显示选号面板
+     */
+    show: Boolean,
   },
 
   data: {
@@ -19,7 +23,9 @@ Component({
      */
     category: 0,
     params: [],
-    confirmable: false
+    confirmable: false,
+    height: 0,
+    top: 2000,
   },
 
   methods: {
@@ -43,6 +49,11 @@ Component({
       } else {
         console.warn('不支持的彩种:', this.data.lottery)
       }
+    },
+    _toggleVisible(visible) {
+      this.setData({
+        top: visible ? 0 : this.data.height
+      })
     },
     toggleSelect(e) {
       const { group, index, value } = e.currentTarget.dataset
@@ -77,9 +88,29 @@ Component({
     }
   },
 
+  lifetimes: {
+    attached() {
+      const systemInfo = wx.getSystemInfoSync()
+      const menuButtonInfo = wx.getMenuButtonBoundingClientRect()
+      // 状态栏高度
+      const statusBarHeight = systemInfo.statusBarHeight
+      // 导航栏高度 = 胶囊高度 + 胶囊上下的 margin
+      const navBarHeight = menuButtonInfo.height + (menuButtonInfo.top - systemInfo.statusBarHeight) * 2
+      // 选号面板高度 = 可用窗口高度 - 状态栏高度 - 导航栏高度
+      const height = systemInfo.windowHeight - statusBarHeight - navBarHeight
+      this.setData({
+        height: height,
+        top: height,
+      })
+    },
+  },
+
   observers: {
     'lottery': function (lottery) {
       this._init(lottery)
-    }
+    },
+    'show': function (show) {
+      this._toggleVisible(show)
+    },
   }
 })

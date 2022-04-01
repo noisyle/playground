@@ -2,9 +2,3 @@
 .demo-button > button + button {
   margin-top: 32rpx;
 }
-
-.picker-panel {
-  position: fixed;
-  overflow: scroll;
-  transition: all .3s ease-in-out;
-}

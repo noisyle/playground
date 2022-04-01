@@ -4,4 +4,4 @@
 </view>
 
 <!-- 选号组件 -->
-<lottery-picker class="picker-panel" style="height: {{pickerHeight}}px; top: {{pickerTop}}px;" lottery="{{pickerType}}" bindsubmit="bindSubmit"></lottery-picker>
+<lottery-picker lottery="{{pickerType}}" show="{{pickerShow}}" bindsubmit="bindSubmit"></lottery-picker>
