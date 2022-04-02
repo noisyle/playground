@@ -35,9 +35,6 @@ Page({
     pickerShow: false,
   },
 
-  onLoad: function (options) {
-  },
-
   bindTap(e) {
     this.setData({
       pickerType: e.currentTarget.dataset.value,
@@ -46,9 +43,7 @@ Page({
   },
 
   bindSubmit(e) {
-    this.setData({
-      pickerShow: false,
-    })
+    console.log(e.detail.value)
     wx.showToast({
       title: JSON.stringify(e.detail.value),
       icon: 'none'

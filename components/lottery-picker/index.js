@@ -8,52 +8,55 @@ Component({
     /**
      * 彩种代码: dlt,ssq,fc3d,pl3,pl5,qxc,qlc
      */
-    lottery: String,
+    lottery: {
+      type: String,
+      value: 'dlt'
+    },
+    /**
+     * 确认按钮文字
+     */
+    btnConfirm: {
+      type: String,
+      value: '确定'
+    },
     /**
      * 是否显示选号面板
      */
-    show: Boolean,
+    show: {
+      type: Boolean,
+      value: false
+    },
   },
 
   data: {
     /**
-     * 选号方式，目前支持两类
+     * 选号方式，目前分为两类
      * 1: 分区选号，分区内无先后顺序。如大乐透、双色球、七乐彩
      * 2: 指定位数选号，每位可选值0-9，位数有先后顺序。如福彩3D、排列3、排列5、七星彩
      */
     category: 0,
     params: [],
     confirmable: false,
-    height: 0,
-    top: 2000,
+    visible: false,
   },
 
   methods: {
     _init(lottery) {
-      const config = lotterys[lottery]
-      if (config) {
-        config.params.forEach((e, i) => {
-          e.numbers = new Array(config.params[i].total).fill('').map((n, j) => {
-            return {
-              value: config.category === 1 ? (j >= 9 ? '' : '0') + (j + 1) : '' + j,
-              selected: false
-            }
+      if (lotterys[lottery]) {
+        const { category, params } = lotterys[lottery]
+        params.forEach((e, i) => {
+          e.numbers = new Array(params[i].total).fill('').map((n, j) => {
+            return { value: category === 1 ? (j >= 9 ? '' : '0') + (j + 1) : '' + j, selected: false }
           })
-          e.selected = new Array(config.params[i].chance).fill('')
+          e.selected = new Array(params[i].chance).fill('')
         })
-        this.setData({
-          category: config.category,
-          params: config.params,
-          confirmable: false
-        })
+        this.setData({ category, params, confirmable: false })
       } else {
-        console.warn('不支持的彩种:', this.data.lottery)
+        console.warn('不支持的彩种: ', this.data.lottery)
       }
     },
-    _toggleVisible(visible) {
-      this.setData({
-        top: visible ? 0 : this.data.height
-      })
+    _setVisible(visible) {
+      this.setData({ visible: visible })
     },
     toggleSelect(e) {
       const { group, index, value } = e.currentTarget.dataset
@@ -68,11 +71,10 @@ Component({
         [pathNumber]: !flag
       })
 
-      const selected = this.data.params[group].numbers.filter(e => e.selected).map(e => e.value)
-      const pathSelected = `params[${group}].selected`
       // 更新选择结果区状态
+      const selected = this.data.params[group].numbers.filter(e => e.selected).map(e => e.value)
       this.setData({
-        [pathSelected]: selected.concat(new Array(this.data.params[group].chance - selected.length).fill(''))
+        [`params[${group}].selected`]: selected.concat(new Array(this.data.params[group].chance - selected.length).fill(''))
       })
 
       // 判断是否可以提交
@@ -85,23 +87,11 @@ Component({
       this.triggerEvent('submit', {
         value: this.data.category === 1 ? this.data.params.map(g => g.selected.join()) : [this.data.params.map(g => g.selected[0]).join()]
       }, {})
-    }
-  },
-
-  lifetimes: {
-    attached() {
-      const systemInfo = wx.getSystemInfoSync()
-      const menuButtonInfo = wx.getMenuButtonBoundingClientRect()
-      // 状态栏高度
-      const statusBarHeight = systemInfo.statusBarHeight
-      // 导航栏高度 = 胶囊高度 + 胶囊上下的 margin
-      const navBarHeight = menuButtonInfo.height + (menuButtonInfo.top - systemInfo.statusBarHeight) * 2
-      // 选号面板高度 = 可用窗口高度 - 状态栏高度 - 导航栏高度
-      const height = systemInfo.windowHeight - statusBarHeight - navBarHeight
-      this.setData({
-        height: height,
-        top: height,
-      })
+      this._setVisible(false)
+    },
+    cancel() {
+      this.triggerEvent('cancel', {}, {})
+      this._setVisible(false)
     },
   },
 
@@ -110,7 +100,7 @@ Component({
       this._init(lottery)
     },
     'show': function (show) {
-      this._toggleVisible(show)
+      this._setVisible(show)
     },
   }
 })

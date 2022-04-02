@@ -2,8 +2,9 @@
 .picker-panel {
   position: fixed;
   width: 100vw;
+  height: 100vh;
   overflow-y: scroll;
-  background: #F5F5F5;
+  background-color: #F5F5F5;
   color: #000000;
   font-size: 32rpx;
   font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
@@ -15,13 +16,13 @@
   line-height: 56rpx;
   text-align: center;
   color: #FFFFFF;
-  background: #F04848;
+  background-color: #F04848;
 }
 
 .picker-group {
   margin-bottom: 24rpx;
   padding: 36rpx 0 28rpx;
-  background: #FFFFFF;
+  background-color: #FFFFFF;
 }
 
 .picker-group.horizon {
@@ -68,7 +69,7 @@
   font-size: 36rpx;
   line-height: 82rpx;
   text-align: center;
-  transform: translate(-1rpx, -1rpx);
+  transform: translate(-2rpx, -2rpx);
 }
 
 .picker-item:active {
@@ -76,9 +77,10 @@
 }
 
 .picker-action {
+  box-sizing: border-box;
   margin-top: 32rpx;
-  padding: 24rpx 32rpx 102rpx;
-  background: #FFFFFF;
+  padding: 24rpx 32rpx 82rpx;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,15 +91,19 @@
   margin: 8rpx 0 20rpx;
   display: flex;
   align-items: center;
+  max-width: 100%;
 }
 
 .picker-selected {
+  flex-shrink: 0;
   display: inline-block;
   width: 60rpx;
   height: 60rpx;
   border-radius: 50%;
   box-sizing: border-box;
-  background-color: #DDDDDD;
+  border: 2rpx solid transparent;
+  border-style: dashed;
+  background-color: #F8F8F8;
   color: #FFFFFF;
   margin: 12rpx;
   font-weight: 600;
@@ -106,23 +112,50 @@
   text-align: center;
 }
 
-.picker-btn-confirm {
+.picker-selected-separtor {
+  display: inline-block;
+  width: 20rpx;
+  flex-shrink: 1;
+}
+
+.picker-btn-group {
   width: 100%;
+  display: flex;
+}
+
+.picker-btn {
+  flex-grow: 1;
+  box-sizing: border-box;
   height: 88rpx;
-  border-radius: 44rpx;
-  background: #DDDDDD;
-  color: #FFFFFF;
   line-height: 88rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+  border-radius: 44rpx;
+  border: 2rpx solid #888888;
+  color: #333333;
+  background-color: #FFFFFF;
   text-align: center;
-  transform: translate(-1rpx, -1rpx);
+  transform: translate(-2rpx, -2rpx);
 }
 
-.picker-btn-confirm:active {
+.picker-btn+.picker-btn {
+  margin-left: 32rpx;
+}
+
+.picker-btn.disabled {
+  border-color: #DDDDDD !important;
+  color: #F8F8F8 !important;
+  background-color: #DDDDDD !important;
+}
+
+.picker-btn.primary {
+  border-color: #F04848;
+  color: #FFFFFF;
+  background-color: #F04848;
+}
+
+.picker-btn:active {
   transform: translate(0, 0);
-}
-
-.picker-btn-confirm.active {
-  background: #F04848;
 }
 
 .small {

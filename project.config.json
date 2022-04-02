@@ -41,7 +41,7 @@
     "ignoreUploadUnusedFiles": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.21.4",
+  "libVersion": "2.19.6",
   "appid": "wx0d0d02958bb86363",
   "projectname": "playground",
   "debugOptions": {

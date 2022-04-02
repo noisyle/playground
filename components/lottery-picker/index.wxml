@@ -1,5 +1,5 @@
 <!--components/lottery-picker/index.wxml-->
-<view class="picker-panel" style="height: {{height}}px; top: {{top}}px;">
+<view class="picker-panel" style="{{visible ? 'top:0' : 'top:100vh'}}">
   <view class="picker-tips">不提供线上购买彩票和兑奖服务</view>
   <view class="picker-group {{category === 1 ? '' : 'horizon'}}" wx:for="{{params}}" wx:key="name" wx:for-index="idx" wx:for-item="group">
     <view class="picker-title">
@@ -16,9 +16,13 @@
     <view class="small">我的选择</view>
     <view class="picker-selected-wrap">
       <block wx:for="{{params}}" wx:key="name" wx:for-index="idx" wx:for-item="group">
-        <text class="picker-selected" style="{{item?'background:'+group.color:''}}" wx:for="{{group.selected}}" wx:key="*this">{{item}}</text>
+        <text class="picker-selected-separtor" wx:if="{{idx !== 0}}"></text>
+        <text class="picker-selected" style="border-color:{{group.color}};{{item?'background:'+group.color:''}}" wx:for="{{group.selected}}" wx:key="*this">{{item}}</text>
       </block>
     </view>
-    <view class="picker-btn-confirm {{confirmable?'active':''}}" bindtap="submit">参与抽奖</view>
+    <view class="picker-btn-group">
+      <view class="picker-btn" hover-class="hover" bindtap="cancel">取消</view>
+      <view class="picker-btn primary {{confirmable?'':'disabled'}}" bindtap="submit">{{btnConfirm}}</view>
+    </view>
   </view>
 </view>
