@@ -4,7 +4,7 @@ Component({
   properties: {
     title: {
       type: String,
-      value: 'Wechat'
+      value: ''
     },
     back: {
       type: Boolean,

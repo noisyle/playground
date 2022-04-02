@@ -1,13 +1,14 @@
 <!--components/navigation-bar/navigation-bar.wxml-->
 <view class="nav" style="height: {{navBarHeight}}px;">
   <view class="nav-main" style="bottom: {{menuBottom}}px; padding: 0 {{menuRight}}px; height: {{menuHeight}}px;">
-    <view class='title'>{{title}}</view>
-    <view class='capsule' wx:if="{{ back || home }}">
-      <view bindtap='back' wx:if="{{back}}">
-        <image src='/components/navigation-bar/images/arrow-left.png'></image>
+    <view class="title">{{title}}</view>
+    <view class="capsule" wx:if="{{ back || home }}">
+      <view class="capsule-btn" bindtap="back" wx:if="{{back}}">
+        <image class="capsule-btn-img" src="/components/navigation-bar/images/arrow-left.png"></image>
       </view>
-      <view bindtap='home' wx:if="{{home}}">
-        <image src='/components/navigation-bar/images/home.png'></image>
+      <view class="capsule-split" wx:if="{{ back && home }}"></view>
+      <view class="capsule-btn" bindtap="home" wx:if="{{home}}">
+        <image class="capsule-btn-img" src="/components/navigation-bar/images/home.png"></image>
       </view>
     </view>
   </view>

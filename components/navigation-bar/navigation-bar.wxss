@@ -32,23 +32,32 @@
   box-sizing: border-box;
   height: 32px;
   border-radius: 32px;
-  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(127, 127, 127, .1);
+  background-color: rgba(255, 255, 255, .6);
   display: inline-flex;
   align-items: center;
+  overflow: hidden;
 }
 
-.capsule>view {
+.capsule-btn {
   width: 44px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.capsule>view+view {
-  border-left: 1px solid #CCCCCC;
+.capsule-btn:active {
+  background-color: rgba(0, 0, 0, .3);
 }
 
-.capsule image {
-  width: 16px;
-  height: 16px;
+.capsule-split {
+  height: 14px;
+  width: 1px;
+  background-color: #DDDDDD;
+}
+
+.capsule-btn-img {
+  width: 14px;
+  height: 14px;
 }

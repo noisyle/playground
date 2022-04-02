@@ -6,12 +6,17 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    // 自定义导航栏相关
+    // 自定义导航栏相关位置信息
     const navBar = {}
     const systemInfo = wx.getSystemInfoSync()
     const menuButtonInfo = wx.getMenuButtonBoundingClientRect()
-    // 导航栏高度 = 状态栏到胶囊的间距（胶囊距上距离-状态栏高度） * 2 + 胶囊高度 + 状态栏高度
-    navBar.navBarHeight = (menuButtonInfo.top - systemInfo.statusBarHeight) * 2 + menuButtonInfo.height + systemInfo.statusBarHeight
+    // 状态栏高度
+    navBar.statusBarHeight = systemInfo.statusBarHeight
+    // 胶囊栏高度 = 胶囊按钮高度 + 胶囊上下margin
+    navBar.menuBarHeight = (menuButtonInfo.top - systemInfo.statusBarHeight) * 2 + menuButtonInfo.height
+    // 导航栏总高度 = 状态栏高度 +胶囊栏高度
+    navBar.navBarHeight = navBar.statusBarHeight + navBar.menuBarHeight
+    // 胶囊按钮尺寸位置信息
     navBar.menuBottom = menuButtonInfo.top - systemInfo.statusBarHeight
     navBar.menuRight = systemInfo.screenWidth - menuButtonInfo.right
     navBar.menuHeight = menuButtonInfo.height
