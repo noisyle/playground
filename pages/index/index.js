@@ -8,7 +8,7 @@ Page({
       { url: '/pages/playground2/index', name: '开关按钮' },
       { url: '/pages/playground3/index', name: '抽奖转盘' },
       { url: '/pages/playground4/index', name: '彩票选号' },
-      { url: '/pages/playground5/index', name: '微信登录' },
+      { url: '/pages/playground5/index', name: '微信API' },
     ]
   },
 })

@@ -1,0 +1,18 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:sphinx;MODE=MySQL
+    username: sa
+    password: 
+    sql-script-encoding: UTF-8
+
+wx:
+  miniapp:
+    appid: wx0d0d02958bb86363
+    secret: e9bdaa515a64945de9f0d0e9c3de8ccf
+    token: 01234567890123456789012345678901
+    aesKey: 01234567890123456789012345678901
+    msgDataFormat: JSON

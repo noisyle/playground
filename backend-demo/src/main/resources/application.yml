@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: sphinx-mp-service
+  pid:
+    file: ${user.home}/logs/${spring.application.name}.pid
+  jackson:
+    default-property-inclusion: non_null
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  profiles:
+    active: '@activatedProperties@'
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.twtech.sphinx.mp.model
+
+security:
+  jwt:
+    token:
+      secret-key: "01234567890123456789012345678901"
+      expire-length: 31536000000
+
+logging:
+  file:
+    name: ${user.home}/logs/${spring.application.name}.log
+  level:
+    root: INFO
+    web: DEBUG
+    com.twtech.sphinx: DEBUG

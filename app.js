@@ -25,8 +25,7 @@ App({
   globalData: {
     token: '',
     user: {},
-    service: 'http://127.0.0.1:8090/',
-    // service: 'https://tm.teweikeji.net/',
+    service: 'http://192.168.188.23:8090/',
   },
   request(param) {
     return new Promise((resolve, reject) => {
@@ -39,6 +38,29 @@ App({
         },
         data: param.data || {},
         success(res) {
+          if (res.statusCode === 200) {
+            resolve(res)
+          } else {
+            reject(res)
+          }
+        },
+        fail(err) {
+          reject(err)
+        }
+      })
+    })
+  },
+  uploadFile(param) {
+    return new Promise((resolve, reject) => {
+      wx.uploadFile({
+        url: `${this.globalData.service}${param.url}`,
+        header: {
+          'Authorization': this.globalData.token ? `Bearer ${this.globalData.token}` : '',
+        },
+        filePath: param.filePath,
+        name: param.name || 'file',
+        formData: param.formData || {},
+        success (res){
           if (res.statusCode === 200) {
             resolve(res)
           } else {

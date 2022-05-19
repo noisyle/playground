@@ -16,7 +16,7 @@ Page({
           wx.showToast({
             title: `登陆成功`,
             icon: 'success',
-            duration: 2000,
+            duration: 1000,
           })
         }).catch(err => {
           console.error('登录失败: %O', err)
@@ -32,12 +32,17 @@ Page({
     app.request({url: 'user/me'}).then(res => {
       console.log('获取个人信息成功: %O', res.data)
       wx.showToast({
-        title: `您好, ${res.data.nickname}`,
-        icon: 'success',
-        duration: 2000,
+        title: res.data.nickname ? `您好, ${res.data.nickname}` : '尚未授权头像昵称',
+        icon: res.data.nickname ? 'success' : 'error',
+        duration: 1000,
       })
     }).catch(err => {
       console.error('获取个人信息失败: %O', err)
+      wx.showToast({
+        title: '尚未登录',
+        icon: 'error',
+        duration: 1000,
+      })
     })
   },
 
@@ -54,7 +59,7 @@ Page({
           wx.showToast({
             title: `您好, ${res.data.nickname}`,
             icon: 'success',
-            duration: 2000,
+            duration: 1000,
           })
         })
       }
@@ -74,5 +79,54 @@ Page({
         })
       })
     }
+  },
+
+  compressVideo(e) {
+    new Promise((resolve, reject) => {
+      wx.chooseMedia({
+        count: 1,
+        mediaType: ['video'],
+        sourceType: ['album', 'camera'],
+        maxDuration: 10,
+        camera: 'back',
+        success(res) {
+          console.log('选择视频', res.tempFiles[0])
+          resolve(res.tempFiles[0])
+        },
+        fail(err) {
+          reject(err)
+        }
+      })
+    }).then(res => {
+      const {tempFilePath, size, ...origin} = res
+      return new Promise((resolve, reject) => {
+        wx.compressVideo({
+          src: res.tempFilePath,
+          quality: 'medium',
+          success(res) {
+            const result = {
+              ...origin,
+              ...res
+            }
+            console.log('压缩视频', result)
+            resolve(result)
+          },
+          fail(err) {
+            reject(err)
+          }
+        })
+      })
+    }).then(res => {
+      return app.uploadFile({
+        url: 'upload/video',
+        filePath: res.tempFilePath,
+        name: 'file',
+        formData: res
+      })
+    }).then(res => {
+      console.log('上传视频', res)
+    }).catch(err => {
+      console.error(err)
+    })
   },
 })

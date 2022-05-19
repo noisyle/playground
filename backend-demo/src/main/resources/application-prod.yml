@@ -1,0 +1,23 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://sphinx-mysql:3306/sphinx?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+    username: sphinx
+    password: abc123!@#
+  redis:
+    host: sphinx-redis
+    port: 6379
+    database: 0
+
+wx:
+  miniapp:
+    appid: wx0d0d02958bb86363
+    secret: e9bdaa515a64945de9f0d0e9c3de8ccf
+    token: 01234567890123456789012345678901
+    aesKey: 01234567890123456789012345678901
+    msgDataFormat: JSON
+    config-storage:
+      type: redistemplate

@@ -1,0 +1,39 @@
+DROP TABLE IF EXISTS `sph_user_wx`;
+CREATE TABLE `sph_user_wx` (
+  `ID` varchar(200) NOT NULL COMMENT '主键ID',
+  `OPENID` varchar(64) NOT NULL COMMENT '开放平台OPENID',
+  `UNIONID` varchar(64) DEFAULT NULL,
+  `SESSION_KEY` varchar(45) DEFAULT NULL,
+  `TELEPHONE` varchar(18) DEFAULT NULL COMMENT '手机号（需验证）',
+  `NICKNAME` varchar(128) DEFAULT NULL COMMENT '昵称',
+  `GENDER` int(11) DEFAULT NULL COMMENT '性别 0:未知,1:男,2:女',
+  `COUNTRY` varchar(32) DEFAULT NULL COMMENT '国家',
+  `PROVINCE` varchar(32) DEFAULT NULL COMMENT '省',
+  `CITY` varchar(32) DEFAULT NULL COMMENT '城市',
+  `LANGUAGE` varchar(32) DEFAULT NULL COMMENT '语言',
+  `AVATARURL` varchar(500) DEFAULT NULL COMMENT '头像',
+  `REMARK` varchar(1024) DEFAULT NULL COMMENT '备注',
+  `STATUS` int(11) NOT NULL DEFAULT '1' COMMENT '数据有效性 1有效 0无效',
+  `REVISION` int(11) NOT NULL DEFAULT '0' COMMENT '乐观锁',
+  `CREATED_BY` varchar(32) DEFAULT NULL COMMENT '创建人',
+  `CREATED_TIME` datetime DEFAULT NULL COMMENT '创建时间',
+  `UPDATED_BY` varchar(32) DEFAULT NULL COMMENT '更新人',
+  `UPDATED_TIME` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `USER_OPENID` (`OPENID`)
+) COMMENT='用户微信信息表';
+
+DROP TABLE IF EXISTS `sph_user_wx_detail`;
+CREATE TABLE `sph_user_wx_detail` (
+  `ID` varchar(200) NOT NULL COMMENT '主键ID,与微信信息表ID相同',
+  `CITY` varchar(100) DEFAULT NULL COMMENT '性别 0:未知,1:男,2:女',
+  `AGE` varchar(32) DEFAULT NULL COMMENT '年龄',
+  `JOB` varchar(32) DEFAULT NULL COMMENT '职业',
+  `STATUS` int(11) NOT NULL DEFAULT '1' COMMENT '数据有效性 1有效 0无效',
+  `REVISION` int(11) NOT NULL DEFAULT '0' COMMENT '乐观锁',
+  `CREATED_BY` varchar(32) DEFAULT NULL COMMENT '创建人',
+  `CREATED_TIME` datetime DEFAULT NULL COMMENT '创建时间',
+  `UPDATED_BY` varchar(32) DEFAULT NULL COMMENT '更新人',
+  `UPDATED_TIME` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`ID`)
+) COMMENT='用户个人信息表';
